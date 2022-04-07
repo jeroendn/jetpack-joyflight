@@ -1,4 +1,4 @@
-package com.github.hanyaeger.tutorial.entities;
+package com.github.jetpackjoyflight.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -6,10 +6,10 @@ import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.tutorial.Waterworld;
-import com.github.hanyaeger.tutorial.entities.map.Coral;
-import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
-import com.github.hanyaeger.tutorial.entities.text.HealthText;
+import com.github.jetpackjoyflight.entities.map.Coral;
+import com.github.jetpackjoyflight.entities.text.BubblesPoppedText;
+import com.github.jetpackjoyflight.entities.text.HealthText;
+import com.github.jetpackjoyflight.Waterworld;
 import javafx.scene.input.KeyCode;
 
 import java.util.Random;

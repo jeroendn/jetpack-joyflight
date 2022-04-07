@@ -1,9 +1,9 @@
-package com.github.hanyaeger.tutorial.spawners;
+package com.github.jetpackjoyflight.spawners;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.EntitySpawner;
-import com.github.hanyaeger.tutorial.entities.AirBubble;
-import com.github.hanyaeger.tutorial.entities.PoisonBubble;
+import com.github.jetpackjoyflight.entities.AirBubble;
+import com.github.jetpackjoyflight.entities.PoisonBubble;
 
 import java.util.Random;
 

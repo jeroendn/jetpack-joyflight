@@ -1,10 +1,10 @@
-package com.github.hanyaeger.tutorial;
+package com.github.jetpackjoyflight;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.tutorial.scenes.GameOverScene;
-import com.github.hanyaeger.tutorial.scenes.GameLevel;
-import com.github.hanyaeger.tutorial.scenes.TitleScene;
+import com.github.jetpackjoyflight.scenes.GameLevel;
+import com.github.jetpackjoyflight.scenes.GameOverScene;
+import com.github.jetpackjoyflight.scenes.TitleScene;
 
 public class Waterworld extends YaegerGame {
 

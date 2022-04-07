@@ -1,4 +1,4 @@
-package com.github.hanyaeger.tutorial.entities;
+package com.github.jetpackjoyflight.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 
@@ -9,7 +9,7 @@ import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.tutorial.entities.map.Coral;
+import com.github.jetpackjoyflight.entities.map.Coral;
 
 public abstract class Bubble extends DynamicCircleEntity implements Collided, Collider, SceneBorderCrossingWatcher {
 

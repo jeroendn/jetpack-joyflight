@@ -1,16 +1,18 @@
-package com.github.hanyaeger.tutorial.scenes;
+package com.github.jetpackjoyflight.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import com.github.hanyaeger.tutorial.Waterworld;
-import com.github.hanyaeger.tutorial.entities.*;
-import com.github.hanyaeger.tutorial.entities.map.CoralTileMap;
-import com.github.hanyaeger.tutorial.entities.swordfish.SwordFish;
-import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
-import com.github.hanyaeger.tutorial.entities.text.HealthText;
-import com.github.hanyaeger.tutorial.spawners.BubbleSpawner;
+import com.github.jetpackjoyflight.entities.Hanny;
+import com.github.jetpackjoyflight.entities.Sharky;
+import com.github.jetpackjoyflight.entities.map.CoralTileMap;
+import com.github.jetpackjoyflight.entities.swordfish.SwordFish;
+import com.github.jetpackjoyflight.entities.text.BubblesPoppedText;
+import com.github.jetpackjoyflight.entities.text.HealthText;
+import com.github.jetpackjoyflight.spawners.BubbleSpawner;
+import com.github.jetpackjoyflight.Waterworld;
+import com.github.jetpackjoyflight.entities.*;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
