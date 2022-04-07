@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import com.github.jetpackjoyflight.entities.Hanny;
+import com.github.jetpackjoyflight.entities.Player;
 import com.github.jetpackjoyflight.entities.Sharky;
 import com.github.jetpackjoyflight.entities.map.CoralTileMap;
 import com.github.jetpackjoyflight.entities.rocket.Rocket;
@@ -35,7 +35,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var bubblesPoppedText = new BubblesPoppedText(new Coordinate2D(0, 30));
         addEntity(bubblesPoppedText);
 
-        addEntity(new Hanny(new Coordinate2D(1, 1), healthText, bubblesPoppedText, main));
+        addEntity(new Player(new Coordinate2D(1, 1), healthText, bubblesPoppedText, main));
         addEntity(new Rocket(new Coordinate2D(200, 300)));
         addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
