@@ -1,4 +1,4 @@
-package com.github.jetpackjoyflight.entities.swordfish;
+package com.github.jetpackjoyflight.entities.rocket;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
