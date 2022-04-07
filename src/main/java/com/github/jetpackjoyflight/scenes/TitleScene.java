@@ -21,16 +21,16 @@ public class TitleScene extends StaticScene {
     @Override
     public void setupScene() {
         setBackgroundAudio("audio/ocean.mp3");
-        setBackgroundImage("backgrounds/background1.jpg");
+        setBackgroundImage("backgrounds/bg.png");
     }
 
     @Override
     public void setupEntities() {
-        var waterworldText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Waterworld");
-        waterworldText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
-        waterworldText.setFill(Color.LIGHTBLUE);
-        waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-        addEntity(waterworldText);
+        var JJText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Jetpack Joyflight");
+        JJText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+        JJText.setFill(Color.LIGHTBLUE);
+        JJText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        addEntity(JJText);
 
         var playGameText = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 2), main);
         playGameText.setAnchorPoint(AnchorPoint.TOP_CENTER);
