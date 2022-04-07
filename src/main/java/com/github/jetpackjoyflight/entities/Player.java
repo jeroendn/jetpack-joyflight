@@ -32,22 +32,14 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         healthText.setText(health);
         bubblesPoppedText.setText(bubblesPopped);
 
-        setGravityConstant(0.005);
-        setFrictionConstant(0.04);
+        setGravityConstant(15);
+        setFrictionConstant(0.8);
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-        if (pressedKeys.contains(KeyCode.LEFT)) {
-            setCurrentFrameIndex(0);
-            setMotion(3, Direction.LEFT);
-        } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setCurrentFrameIndex(1);
-            setMotion(3, Direction.RIGHT);
-        } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotion(3, Direction.UP);
-        } else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotion(3, Direction.DOWN);
+        if (pressedKeys.contains(KeyCode.UP)) {
+            setMotion(10, Direction.UP);
         }
     }
 
