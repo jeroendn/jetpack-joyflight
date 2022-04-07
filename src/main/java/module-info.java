@@ -1,4 +1,4 @@
-module waterworld {
+module jetpackjoyflight {
     requires hanyaeger;
 
     exports com.github.jetpackjoyflight;
