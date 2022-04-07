@@ -6,6 +6,8 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
+import java.util.Random;
+
 public class SwordFish extends DynamicCompositeEntity implements SceneBorderCrossingWatcher {
 
     public SwordFish(final Coordinate2D initialLocation) {
@@ -18,12 +20,12 @@ public class SwordFish extends DynamicCompositeEntity implements SceneBorderCros
         var swordFishSprite = new SwordfishSprite(new Coordinate2D(0, 0));
         addEntity(swordFishSprite);
 
-        var hitBox = new HitBox(new Coordinate2D(0, 40));
+        var hitBox = new HitBox(new Coordinate2D(1, 40));
         addEntity(hitBox);
     }
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-        setAnchorLocationX(getSceneWidth());
+        setAnchorLocation(new Coordinate2D(getSceneWidth(), new Random().nextInt((int) getSceneHeight() - 150)));
     }
 }
