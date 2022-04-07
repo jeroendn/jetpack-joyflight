@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
-import com.github.jetpackjoyflight.Waterworld;
+import com.github.jetpackjoyflight.Main;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
@@ -14,18 +14,18 @@ import javafx.scene.text.FontWeight;
 
 public class QuitButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
-    private final Waterworld waterworld;
+    private final Main main;
 
-    public QuitButton(Coordinate2D initialPosition, Waterworld waterworld) {
+    public QuitButton(Coordinate2D initialPosition, Main main) {
         super(initialPosition, "Quit game");
-        this.waterworld = waterworld;
+        this.main = main;
         setFill(Color.ORANGE);
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
     @Override
     public void onMouseButtonPressed(final MouseButton button, final Coordinate2D coordinate2D) {
-        waterworld.quit();
+        main.quit();
     }
 
     @Override

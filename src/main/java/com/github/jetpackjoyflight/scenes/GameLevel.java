@@ -11,15 +11,14 @@ import com.github.jetpackjoyflight.entities.swordfish.SwordFish;
 import com.github.jetpackjoyflight.entities.text.BubblesPoppedText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.spawners.BubbleSpawner;
-import com.github.jetpackjoyflight.Waterworld;
-import com.github.jetpackjoyflight.entities.*;
+import com.github.jetpackjoyflight.Main;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
-    private Waterworld waterworld;
+    private Main main;
 
-    public GameLevel(Waterworld waterworld) {
-        this.waterworld = waterworld;
+    public GameLevel(Main main) {
+        this.main = main;
     }
 
     @Override
@@ -36,7 +35,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var bubblesPoppedText = new BubblesPoppedText(new Coordinate2D(0, 30));
         addEntity(bubblesPoppedText);
 
-        addEntity(new Hanny(new Coordinate2D(1, 1), healthText, bubblesPoppedText, waterworld));
+        addEntity(new Hanny(new Coordinate2D(1, 1), healthText, bubblesPoppedText, main));
         addEntity(new SwordFish(new Coordinate2D(200, 300)));
         addEntity(new Sharky(new Coordinate2D(0, 100)));
     }

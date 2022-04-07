@@ -6,7 +6,7 @@ import com.github.jetpackjoyflight.scenes.GameLevel;
 import com.github.jetpackjoyflight.scenes.GameOverScene;
 import com.github.jetpackjoyflight.scenes.TitleScene;
 
-public class Waterworld extends YaegerGame {
+public class Main extends YaegerGame {
 
     public static void main(String[] args) {
         launch(args);
@@ -14,7 +14,7 @@ public class Waterworld extends YaegerGame {
 
     @Override
     public void setupGame() {
-        setGameTitle("Waterworld");
+        setGameTitle("Jetpack Joyflight");
         setSize(new Size(800, 600));
     }
 

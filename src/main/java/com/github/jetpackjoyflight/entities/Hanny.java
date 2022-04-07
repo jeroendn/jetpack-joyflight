@@ -9,7 +9,7 @@ import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.jetpackjoyflight.entities.map.Coral;
 import com.github.jetpackjoyflight.entities.text.BubblesPoppedText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
-import com.github.jetpackjoyflight.Waterworld;
+import com.github.jetpackjoyflight.Main;
 import javafx.scene.input.KeyCode;
 
 import java.util.Random;
@@ -19,16 +19,16 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
 
     private final HealthText healthText;
     private final BubblesPoppedText bubblesPoppedText;
-    private final Waterworld waterworld;
+    private final Main main;
     private int health = 10;
     private int bubblesPopped = 0;
 
-    public Hanny(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Waterworld waterworld) {
+    public Hanny(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Main main) {
         super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
 
         this.healthText = healthText;
         this.bubblesPoppedText = bubblesPoppedText;
-        this.waterworld = waterworld;
+        this.main = main;
         healthText.setText(health);
         bubblesPoppedText.setText(bubblesPopped);
 
@@ -61,7 +61,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
             healthText.setText(--health);
 
             if (health == 0) {
-                this.waterworld.setActiveScene(2);
+                this.main.setActiveScene(2);
             } else {
                 setAnchorLocation(new Coordinate2D(
                         new Random().nextInt((int) (getSceneWidth() - getWidth())),
