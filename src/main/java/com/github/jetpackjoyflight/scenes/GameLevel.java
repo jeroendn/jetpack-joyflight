@@ -37,12 +37,12 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         addEntity(new Player(new Coordinate2D(50, 1), healthText, bubblesPoppedText, main));
         addEntity(new Rocket(new Coordinate2D(200, 300)));
-        addEntity(new Sharky(new Coordinate2D(0, 100)));
+//        addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
 
     @Override
     public void setupEntitySpawners() {
-        addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));
+//        addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));
     }
 
     @Override
