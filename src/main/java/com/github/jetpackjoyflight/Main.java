@@ -15,7 +15,7 @@ public class Main extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Jetpack Joyflight");
-        setSize(new Size(800, 600));
+        setSize(new Size(1200, 600));
     }
 
     @Override

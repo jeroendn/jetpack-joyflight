@@ -23,7 +23,7 @@ public class GameOverScene extends StaticScene {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/angry-cat-furious-cat.gif");
-        setBackgroundAudio("audio/coconut_mall.mp3");
+        setBackgroundAudio("windows-xp-shutdown-earrape.mp3");
     }
 
     @Override
