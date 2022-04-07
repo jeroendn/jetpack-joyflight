@@ -27,7 +27,7 @@ public abstract class Bubble extends DynamicCircleEntity implements Collided, Co
             return;
         }
 
-        var popSound = new SoundClip("audio/pop.mp3");
+        var popSound = new SoundClip("audio/coconut_mall.mp3");
         popSound.play();
 
         remove();
