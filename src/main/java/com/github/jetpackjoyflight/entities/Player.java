@@ -24,7 +24,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     private int bubblesPopped = 0;
 
     public Player(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Main main) {
-        super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
+        super("sprites/player.png", location, new Size(200, 100), 1, 1);
 
         this.healthText = healthText;
         this.bubblesPoppedText = bubblesPoppedText;
