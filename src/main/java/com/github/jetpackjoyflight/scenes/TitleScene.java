@@ -21,7 +21,7 @@ public class TitleScene extends StaticScene {
     @Override
     public void setupScene() {
         setBackgroundAudio("audio/coconut_mall.mp3");
-        setBackgroundImage("backgrounds/bg.png");
+        setBackgroundImage("backgrounds/angry-cat-furious-cat.gif");
     }
 
     @Override
