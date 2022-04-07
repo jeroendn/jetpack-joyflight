@@ -6,6 +6,6 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 public class RocketSprite extends SpriteEntity {
 
     public RocketSprite(final Coordinate2D location) {
-        super("sprites/swordfish.png", location);
+        super("sprites/missile.png", location);
     }
 }
