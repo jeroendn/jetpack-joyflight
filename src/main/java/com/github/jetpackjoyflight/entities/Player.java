@@ -15,7 +15,7 @@ import javafx.scene.input.KeyCode;
 import java.util.Random;
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider, Newtonian {
+public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider, Newtonian {
 
     private final HealthText healthText;
     private final BubblesPoppedText bubblesPoppedText;
@@ -23,7 +23,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     private int health = 10;
     private int bubblesPopped = 0;
 
-    public Hanny(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Main main) {
+    public Player(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Main main) {
         super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
 
         this.healthText = healthText;
