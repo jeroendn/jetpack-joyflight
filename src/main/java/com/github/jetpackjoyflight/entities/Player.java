@@ -12,7 +12,6 @@ import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
 import javafx.scene.input.KeyCode;
 
-import java.util.Random;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider, Newtonian {
@@ -32,14 +31,15 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         healthText.setText(health);
         bubblesPoppedText.setText(bubblesPopped);
 
-        setGravityConstant(15);
-        setFrictionConstant(0.8);
+        setGravityConstant(20);
+        setFrictionConstant(0.9);
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+       System.out.println(pressedKeys);
         if (pressedKeys.contains(KeyCode.UP)) {
-            setMotion(10, Direction.UP);
+            setMotion(100, Direction.UP);
         }
     }
 
@@ -54,10 +54,6 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
             if (health == 0) {
                 this.main.setActiveScene(2);
-            } else {
-                setAnchorLocation(new Coordinate2D(
-                        new Random().nextInt((int) (getSceneWidth() - getWidth())),
-                        new Random().nextInt((int) (getSceneHeight() - getHeight()))));
             }
         }
     }

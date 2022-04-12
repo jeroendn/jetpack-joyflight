@@ -23,7 +23,7 @@ public class GameOverScene extends StaticScene {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/angry-cat-furious-cat.gif");
-        setBackgroundAudio("audio/fail-trombone.mp3");
+//        setBackgroundAudio("audio/fail-trombone.mp3");
     }
 
     @Override
@@ -34,9 +34,9 @@ public class GameOverScene extends StaticScene {
         gameOverText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
         addEntity(gameOverText);
 
-        var playGamButton = new StartButton(new Coordinate2D((getWidth() / 2) - 20, getHeight() / 2), main);
-        playGamButton.setAnchorPoint(AnchorPoint.TOP_RIGHT);
-        addEntity(playGamButton);
+        var playGameButton = new StartButton(new Coordinate2D((getWidth() / 2) - 20, getHeight() / 2), main);
+        playGameButton.setAnchorPoint(AnchorPoint.TOP_RIGHT);
+        addEntity(playGameButton);
 
         var exitGameButton = new QuitButton(new Coordinate2D((getWidth() / 2) + 20, getHeight() / 2), main);
         exitGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);

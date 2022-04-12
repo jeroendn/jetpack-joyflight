@@ -24,7 +24,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/bg2.png");
-        setBackgroundAudio("audio/coconut_mall.mp3");
+//        setBackgroundAudio("audio/coconut_mall.mp3");
     }
 
     @Override
@@ -47,6 +47,6 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
     @Override
     public void setupTileMaps() {
-        addTileMap(new CoralTileMap());
+//        addTileMap(new CoralTileMap());
     }
 }
