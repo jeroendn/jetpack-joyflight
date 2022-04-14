@@ -31,7 +31,26 @@ public class Rocket extends DynamicCompositeEntity implements SceneBorderCrossin
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-        System.out.println(this.player);
-        setAnchorLocation(new Coordinate2D(getSceneWidth(), new Random().nextInt((int) getSceneHeight() - 150)));
+        final Player player = this.player;
+
+        new Thread(new Runnable() {
+            private final Player p = player;
+
+            public void run() {
+                try {
+//                    var min = 3000;
+//                    var max = 6000;
+//                    Thread.sleep((int) ((Math.random() * (max - min)) + min));
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setAnchorLocation(new Coordinate2D(getSceneWidth(), this.p.getAnchorLocation().getY()));
+            }
+        }).start();
+
+
+        System.out.println(this.getAnchorLocation().getX());
+//        setAnchorLocation(new Coordinate2D(getSceneWidth(), new Random().nextInt((int) getSceneHeight() - 150)));
     }
 }
