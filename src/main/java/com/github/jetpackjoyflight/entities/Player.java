@@ -46,19 +46,13 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     @Override
     public void onCollision(Collider collidingObject) {
-        if (collidingObject instanceof Coral) {
-            setSpeed(0);
-        } else if (collidingObject instanceof AirBubble) {
-            bubblesPoppedText.setText(++bubblesPopped);
-        } else {
-            if (Objects.isNull(lastHit) || (lastHit + 2000) < System.currentTimeMillis()) {
-                healthText.setText(--health);
+        if (Objects.isNull(lastHit) || (lastHit + 2000) < System.currentTimeMillis()) {
+            healthText.setText(--health);
 
-                if (health == 0) {
-                    this.main.setActiveScene(2);
-                }
-                lastHit = System.currentTimeMillis();
+            if (health == 0) {
+                this.main.setActiveScene(2);
             }
+            lastHit = System.currentTimeMillis();
         }
     }
 
