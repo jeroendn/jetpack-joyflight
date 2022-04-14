@@ -39,7 +39,6 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-       System.out.println(pressedKeys);
         if (pressedKeys.contains(KeyCode.UP)) {
             setMotion(100, Direction.UP);
         }
