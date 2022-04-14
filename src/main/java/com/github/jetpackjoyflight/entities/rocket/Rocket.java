@@ -25,7 +25,7 @@ public class Rocket extends DynamicCompositeEntity implements SceneBorderCrossin
         var swordFishSprite = new RocketSprite(new Coordinate2D(0, 0));
         addEntity(swordFishSprite);
 
-        var hitBox = new HitBox(new Coordinate2D(88, 41));
+        var hitBox = new HitBox(new Coordinate2D(0, 0));
         addEntity(hitBox);
     }
 
