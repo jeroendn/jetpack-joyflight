@@ -12,6 +12,7 @@ import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
 import javafx.scene.input.KeyCode;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider, Newtonian {
@@ -21,6 +22,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     private final Main main;
     private int health = 10;
     private int bubblesPopped = 0;
+    private Long lastHit = null;
 
     public Player(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Main main) {
         super("sprites/player.png", location, new Size(200, 100), 1, 1);
@@ -50,10 +52,13 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         } else if (collidingObject instanceof AirBubble) {
             bubblesPoppedText.setText(++bubblesPopped);
         } else {
-            healthText.setText(--health);
+            if (Objects.isNull(lastHit) || (lastHit + 2000) < System.currentTimeMillis()) {
+                healthText.setText(--health);
 
-            if (health == 0) {
-                this.main.setActiveScene(2);
+                if (health == 0) {
+                    this.main.setActiveScene(2);
+                }
+                lastHit = System.currentTimeMillis();
             }
         }
     }

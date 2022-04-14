@@ -12,7 +12,7 @@ public class Rocket extends DynamicCompositeEntity implements SceneBorderCrossin
 
     public Rocket(final Coordinate2D initialLocation) {
         super(initialLocation);
-        setMotion(6, Direction.LEFT);
+        setMotion(9, Direction.LEFT);
     }
 
     @Override
