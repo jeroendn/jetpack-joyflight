@@ -7,6 +7,8 @@ import com.github.jetpackjoyflight.entities.Player;
 
 public class Rocket extends Object {
 
+    protected final int triggerTime = 2000;
+
     public Rocket(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = true;
@@ -24,13 +26,15 @@ public class Rocket extends Object {
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
         final Player player = this.player;
+        final int triggerTime = this.triggerTime;
 
         new Thread(new Runnable() {
             private final Player p = player;
+            private final int t = triggerTime;
 
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(this.t);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

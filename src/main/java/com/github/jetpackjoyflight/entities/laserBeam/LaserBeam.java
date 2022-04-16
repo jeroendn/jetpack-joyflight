@@ -7,6 +7,10 @@ import com.github.jetpackjoyflight.entities.Player;
 
 public class LaserBeam extends Object {
 
+    protected int position;
+    protected final int triggerTime = 0;
+    protected int time = 0;
+
     public LaserBeam(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = true;

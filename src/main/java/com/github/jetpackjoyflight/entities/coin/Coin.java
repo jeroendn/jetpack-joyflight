@@ -7,6 +7,9 @@ import com.github.jetpackjoyflight.entities.Player;
 
 public class Coin extends Object {
 
+    protected int score;
+    protected boolean isBig;
+
     public Coin(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = false;
