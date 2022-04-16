@@ -11,7 +11,6 @@ import java.util.TimerTask;
 public class Rocket extends Object {
 
     protected final int triggerTime = 2000;
-    private Timer timer;
 
     public Rocket(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
@@ -20,17 +19,17 @@ public class Rocket extends Object {
 
     @Override
     protected void setupEntities() {
-        var swordFishSprite = new Sprite(new Coordinate2D(0, 0));
-        addEntity(swordFishSprite);
+        var sprite = new RocketSprite(new Coordinate2D(0, 0));
+        addEntity(sprite);
 
-        var hitBox = new HitBox(new Coordinate2D(0, 0));
+        var hitBox = new RocketHitBox(new Coordinate2D(0, 0), this);
         addEntity(hitBox);
     }
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-        this.timer = new Timer();
-        this.timer.schedule(new TimerTask() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 if (player.getHealth() > 0) {

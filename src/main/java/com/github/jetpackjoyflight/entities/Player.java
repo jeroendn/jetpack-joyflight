@@ -49,13 +49,19 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     @Override
     public void onCollision(Collider collidingObject) {
-        if (Objects.isNull(lastHit) || (lastHit + 2000) < System.currentTimeMillis()) {
-            healthText.setText(--health);
+        if ((Objects.isNull(lastHit) || (lastHit + 2000) < System.currentTimeMillis()) && collidingObject instanceof HitBox) {
+            if (((HitBox) collidingObject).object.isHostile) {
 
-            if (health == 0) {
-                this.main.setActiveScene(2);
+                healthText.setText(--health);
+
+                if (health == 0) {
+                    this.main.setActiveScene(2);
+                }
+                lastHit = System.currentTimeMillis();
+
+            } else {
+
             }
-            lastHit = System.currentTimeMillis();
         }
     }
 
@@ -80,7 +86,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         }
     }
 
-    private void addDistance(){
+    private void addDistance() {
         this.timer = new Timer();
         this.timer.schedule(new TimerTask() {
             @Override

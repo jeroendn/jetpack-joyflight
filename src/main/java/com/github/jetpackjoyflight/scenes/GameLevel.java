@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.jetpackjoyflight.entities.Player;
+import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
 import com.github.jetpackjoyflight.entities.rocket.Rocket;
 import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
@@ -21,7 +22,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/background-fast.gif");
-//        setBackgroundAudio("audio/coconut_mall.mp3");
+        setBackgroundAudio("audio/coconut_mall.mp3");
+        setBackgroundAudioVolume(.05);
     }
 
     @Override
@@ -35,7 +37,9 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         var player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
         addEntity(player);
+
         addEntity(new Rocket(new Coordinate2D(200, 300), player));
+        addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
         //addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
 
