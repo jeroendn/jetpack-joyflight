@@ -92,4 +92,8 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
             }
         }, 0, 1000);
     }
+
+    public int getHealth() {
+        return health;
+    }
 }

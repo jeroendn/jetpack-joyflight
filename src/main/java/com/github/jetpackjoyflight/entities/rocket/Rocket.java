@@ -5,9 +5,13 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.jetpackjoyflight.entities.Object;
 import com.github.jetpackjoyflight.entities.Player;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Rocket extends Object {
 
     protected final int triggerTime = 2000;
+    private Timer timer;
 
     public Rocket(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
@@ -25,21 +29,14 @@ public class Rocket extends Object {
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-        final Player player = this.player;
-        final int triggerTime = this.triggerTime;
-
-        new Thread(new Runnable() {
-            private final Player p = player;
-            private final int t = triggerTime;
-
+        this.timer = new Timer();
+        this.timer.schedule(new TimerTask() {
+            @Override
             public void run() {
-                try {
-                    Thread.sleep(this.t);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if (player.getHealth() > 0) {
+                    setAnchorLocation(new Coordinate2D(getSceneWidth(), player.getAnchorLocation().getY()));
                 }
-                setAnchorLocation(new Coordinate2D(getSceneWidth(), this.p.getAnchorLocation().getY()));
             }
-        }).start();
+        }, 2, triggerTime);
     }
 }

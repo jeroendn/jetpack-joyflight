@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="com.github.jetpackjoyflight.Main" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="com.github.jetpackjoyflight.Main" />
-    <module name="jetpack-joyflight" />
+    <module name="jetpackjoyflight" />
     <option name="PROGRAM_PARAMETERS" value="--noSplash" />
     <extension name="coverage">
       <pattern>
