@@ -17,10 +17,10 @@ public class Coin extends Object {
 
     @Override
     protected void setupEntities() {
-        var powerUpSprite = new Sprite(new Coordinate2D(0, 0));
-        addEntity(powerUpSprite);
+        var sprite = new CoinSprite(new Coordinate2D(0, 0));
+        addEntity(sprite);
 
-        var hitBox = new HitBox(new Coordinate2D(0, 0));
+        var hitBox = new CoinHitBox(new Coordinate2D(0, 0), this);
         addEntity(hitBox);
     }
 

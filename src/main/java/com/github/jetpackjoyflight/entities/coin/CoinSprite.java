@@ -1,11 +1,11 @@
-package com.github.jetpackjoyflight.entities.laserBeam;
+package com.github.jetpackjoyflight.entities.coin;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
-public class Sprite extends SpriteEntity {
+public class CoinSprite extends SpriteEntity {
 
-    public Sprite(final Coordinate2D location) {
+    public CoinSprite(final Coordinate2D location) {
         super("sprites/noimg.png", location);
     }
 }
