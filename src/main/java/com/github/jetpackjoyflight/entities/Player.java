@@ -6,35 +6,38 @@ import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.jetpackjoyflight.entities.map.Coral;
-import com.github.jetpackjoyflight.entities.text.BubblesPoppedText;
+import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
 import javafx.scene.input.KeyCode;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider, Newtonian {
 
     private final HealthText healthText;
-    private final BubblesPoppedText bubblesPoppedText;
+    private final DistanceText distanceText;
     private final Main main;
-    private int health = 10;
-    private int bubblesPopped = 0;
+    private int health = 1;
+    private int distance = 0;
     private Long lastHit = null;
+    private Timer timer;
 
-    public Player(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Main main) {
+    public Player(final Coordinate2D location, final HealthText healthText, final DistanceText distanceText, final Main main) {
         super("sprites/player.png", location, new Size(200, 100), 1, 1);
 
         this.healthText = healthText;
-        this.bubblesPoppedText = bubblesPoppedText;
+        this.distanceText = distanceText;
         this.main = main;
         healthText.setText(health);
-        bubblesPoppedText.setText(bubblesPopped);
+        distanceText.setText(distance);
 
         setGravityConstant(20);
         setFrictionConstant(0.9);
+        this.addDistance();
     }
 
     @Override
@@ -75,5 +78,18 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
             default:
                 break;
         }
+    }
+
+    private void addDistance(){
+        this.timer = new Timer();
+        this.timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (health > 0) {
+                    distanceText.setText(++distance);
+                    System.out.println(distance + " " + health);
+                }
+            }
+        }, 0, 1000);
     }
 }

@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.jetpackjoyflight.entities.Player;
 import com.github.jetpackjoyflight.entities.rocket.Rocket;
-import com.github.jetpackjoyflight.entities.text.BubblesPoppedText;
+import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
 
@@ -29,10 +29,11 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var healthText = new HealthText(new Coordinate2D(0, 0));
         addEntity(healthText);
 
-        var bubblesPoppedText = new BubblesPoppedText(new Coordinate2D(0, 30));
-        addEntity(bubblesPoppedText);
 
-        var player = new Player(new Coordinate2D(50, 1), healthText, bubblesPoppedText, main);
+        var distanceText = new DistanceText(new Coordinate2D(0, 30));
+        addEntity(distanceText);
+
+        var player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
         addEntity(player);
         addEntity(new Rocket(new Coordinate2D(200, 300), player));
         //addEntity(new Sharky(new Coordinate2D(0, 100)));
