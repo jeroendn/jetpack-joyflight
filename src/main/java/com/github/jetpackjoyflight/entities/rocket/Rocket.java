@@ -1,28 +1,22 @@
 package com.github.jetpackjoyflight.entities.rocket;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Direction;
-import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
-import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.github.jetpackjoyflight.entities.Object;
 import com.github.jetpackjoyflight.entities.Player;
 
-import java.util.Random;
+public class Rocket extends Object {
 
-public class Rocket extends DynamicCompositeEntity implements SceneBorderCrossingWatcher {
+    protected final int triggerTime = 2000;
 
-    private final Player player;
-
-    public Rocket(final Coordinate2D initialLocation, Player player) {
-        super(initialLocation);
-        setMotion(9, Direction.LEFT);
-
-        this.player = player;
+    public Rocket(Coordinate2D initialLocation, Player player) {
+        super(initialLocation, player);
+        this.isHostile = true;
     }
 
     @Override
     protected void setupEntities() {
-        var swordFishSprite = new RocketSprite(new Coordinate2D(0, 0));
+        var swordFishSprite = new Sprite(new Coordinate2D(0, 0));
         addEntity(swordFishSprite);
 
         var hitBox = new HitBox(new Coordinate2D(0, 0));
@@ -32,13 +26,15 @@ public class Rocket extends DynamicCompositeEntity implements SceneBorderCrossin
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
         final Player player = this.player;
+        final int triggerTime = this.triggerTime;
 
         new Thread(new Runnable() {
             private final Player p = player;
+            private final int t = triggerTime;
 
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(this.t);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
