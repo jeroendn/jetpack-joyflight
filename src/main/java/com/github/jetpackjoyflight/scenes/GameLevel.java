@@ -14,6 +14,7 @@ import com.github.jetpackjoyflight.Main;
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
     private Main main;
+    private Player player;
 
     public GameLevel(Main main) {
         this.main = main;
@@ -35,7 +36,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var distanceText = new DistanceText(new Coordinate2D(0, 30));
         addEntity(distanceText);
 
-        var player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
+        this.player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
         addEntity(player);
 
         addEntity(new Rocket(new Coordinate2D(200, 300), player));
@@ -51,5 +52,9 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     @Override
     public void setupTileMaps() {
 //        addTileMap(new CoralTileMap());
+    }
+
+    public String getDistanceText() {
+        return this.player.getDistanceText();
     }
 }

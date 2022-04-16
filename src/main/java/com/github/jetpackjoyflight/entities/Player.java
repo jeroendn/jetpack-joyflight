@@ -93,7 +93,6 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
             public void run() {
                 if (health > 0) {
                     distanceText.setText(++distance);
-                    System.out.println(distance + " " + health);
                 }
             }
         }, 0, 1000);
@@ -101,5 +100,9 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     public int getHealth() {
         return health;
+    }
+
+    public String getDistanceText() {
+        return distanceText.getText();
     }
 }
