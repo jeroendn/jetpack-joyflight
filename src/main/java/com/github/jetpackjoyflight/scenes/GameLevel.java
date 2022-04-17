@@ -11,10 +11,15 @@ import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
-    private Main main;
+    private final Main main;
     private Player player;
+    private final Timer timer = new Timer();
 
     public GameLevel(Main main) {
         this.main = main;
@@ -32,15 +37,30 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var healthText = new HealthText(new Coordinate2D(0, 0));
         addEntity(healthText);
 
-
         var distanceText = new DistanceText(new Coordinate2D(0, 30));
         addEntity(distanceText);
 
         this.player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
         addEntity(player);
 
-        addEntity(new Rocket(new Coordinate2D(200, 300), player));
-        addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
+        this.timer.schedule(new TimerTask() {
+            public void run() {
+                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
+            }
+        }, new Random().nextInt(5000));
+
+        this.timer.schedule(new TimerTask() {
+            public void run() {
+                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
+            }
+        }, new Random().nextInt(5000));
+
+        this.timer.schedule(new TimerTask() {
+            public void run() {
+                addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
+            }
+        }, new Random().nextInt(5000));
+
         //addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
 

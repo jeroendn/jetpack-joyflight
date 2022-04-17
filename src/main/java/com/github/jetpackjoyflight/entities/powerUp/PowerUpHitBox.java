@@ -11,8 +11,8 @@ public class PowerUpHitBox extends HitBox implements Collider {
     public PowerUpHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);
 
-        setWidth(0);
-        setHeight(0);
+        setWidth(75);
+        setHeight(75);
         setFill(Color.TRANSPARENT);
     }
 }
