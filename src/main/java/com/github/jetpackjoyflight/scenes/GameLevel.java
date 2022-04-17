@@ -28,8 +28,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/background-fast.gif");
-        setBackgroundAudio("audio/coconut_mall.mp3");
-        setBackgroundAudioVolume(.05);
+//        setBackgroundAudio("audio/coconut_mall.mp3");
+//        setBackgroundAudioVolume(.05);
     }
 
     @Override
@@ -43,37 +43,21 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         this.player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
         addEntity(player);
 
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
-            }
-        }, new Random().nextInt(5000));
-
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
-            }
-        }, new Random().nextInt(5000));
-
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                for (int i = 0; i < 1000; i++) {
-                    new Timer().schedule(new TimerTask() {
-                        public void run() {
-                            addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
-                        }
-                    }, 1);
+        for (int i = 0; i < 100; i++) {
+            this.timer.schedule(new TimerTask() {
+                public void run() {
+                    addEntity(new Rocket(new Coordinate2D(getWidth(), new Random().nextInt((int) getHeight())), player));
+                    System.out.println("Rocket spawned 1");
                 }
-            }
-        }, 30000);
+            }, new Random().nextInt(100000));
+        }
+
 
         this.timer.schedule(new TimerTask() {
             public void run() {
                 addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
             }
         }, new Random().nextInt(5000));
-
-        //addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
 
     @Override
