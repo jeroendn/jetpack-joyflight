@@ -57,6 +57,18 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         this.timer.schedule(new TimerTask() {
             public void run() {
+                for (int i = 0; i < 1000; i++) {
+                    new Timer().schedule(new TimerTask() {
+                        public void run() {
+                            addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
+                        }
+                    }, 1);
+                }
+            }
+        }, 30000);
+
+        this.timer.schedule(new TimerTask() {
+            public void run() {
                 addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
             }
         }, new Random().nextInt(5000));
