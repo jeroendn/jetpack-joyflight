@@ -21,6 +21,9 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     private Player player;
     private final Timer timer = new Timer();
 
+    /**
+     * @param main
+     */
     public GameLevel(Main main) {
         this.main = main;
     }
@@ -72,6 +75,9 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 //        addTileMap(new CoralTileMap());
     }
 
+    /**
+     * @return
+     */
     public String getDistanceText() {
         return this.player.getDistanceText();
     }

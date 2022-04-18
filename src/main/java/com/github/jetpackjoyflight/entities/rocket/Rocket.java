@@ -15,6 +15,11 @@ public class Rocket extends Object {
     protected final int spawnIntervalMax = 10000;
     protected boolean triggered = false;
 
+    /**
+     *
+     * @param initialLocation the initial location of the rocket
+     * @param player
+     */
     public Rocket(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = true;
@@ -29,6 +34,9 @@ public class Rocket extends Object {
         addEntity(hitBox);
     }
 
+    /**
+     * @param border the border of the scene
+     */
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
         if (!this.triggered) {

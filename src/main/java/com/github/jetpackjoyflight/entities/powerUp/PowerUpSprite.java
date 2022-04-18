@@ -6,6 +6,9 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class PowerUpSprite extends SpriteEntity {
 
+    /**
+     * @param location
+     */
     public PowerUpSprite(final Coordinate2D location) {
         super("sprites/powerup.png", location, new Size(75, 75));
     }

@@ -16,6 +16,10 @@ public class PowerUp extends Object {
     protected final int spawnIntervalMax = 30000;
     protected boolean triggered = false;
 
+    /**
+     * @param initialLocation the initial location of the power up
+     * @param player
+     */
     public PowerUp(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = false;
@@ -30,6 +34,9 @@ public class PowerUp extends Object {
         addEntity(hitBox);
     }
 
+    /**
+     * @param border
+     */
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
         if (!this.triggered) {
@@ -38,7 +45,7 @@ public class PowerUp extends Object {
                 @Override
                 public void run() {
                     if (player.getHealth() > 0) {
-                        setAnchorLocation(new Coordinate2D(getSceneWidth(), player.getAnchorLocation().getY()));
+                        setAnchorLocation(new Coordinate2D(getSceneWidth(), new Random().nextInt((int)getSceneHeight())));
                     }
                     triggered = false;
                 }
@@ -47,8 +54,32 @@ public class PowerUp extends Object {
         }
     }
 
+    /**
+     * @return random power up
+     */
     public String getPowerUp() {
-        // TODO return a random item from this.options
-        return "";
+        int index = new Random().nextInt(this.options.length);
+        String powerUp = this.options[index];
+
+        switch (powerUp) {
+            case "health" -> handleHealthPowerUp();
+            case "mech" -> handleMechPowerUp();
+            case "coins" -> handleCoinPowerUp();
+            default -> handleHealthPowerUp(); // Even if no power up was found we give the health power up as fallback
+        }
+
+        return powerUp;
+    }
+
+    protected void handleHealthPowerUp() {
+        this.player.addHealth(1);
+    }
+
+    protected void handleMechPowerUp() {
+        // TODO
+    }
+
+    protected void handleCoinPowerUp() {
+        // TODO
     }
 }

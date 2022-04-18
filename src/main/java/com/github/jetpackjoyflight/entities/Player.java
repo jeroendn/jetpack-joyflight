@@ -6,6 +6,8 @@ import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
+import com.github.jetpackjoyflight.entities.powerUp.PowerUpHitBox;
 import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
@@ -24,8 +26,14 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     private int health = 1;
     private int distance = 0;
     private Long lastHit = null;
-    private Timer timer;
 
+    /**
+     * Constructs a new Player with the given parameters.
+     * @param location the initial location of the player
+     * @param healthText the health text
+     * @param distanceText the distance text
+     * @param main
+     */
     public Player(final Coordinate2D location, final HealthText healthText, final DistanceText distanceText, final Main main) {
         super("sprites/player.png", location, new Size(200, 100), 1, 1);
 
@@ -40,6 +48,9 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         this.addDistance();
     }
 
+    /**
+     * @param pressedKeys the keys that are pressed
+     */
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (
@@ -53,6 +64,10 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         }
     }
 
+    /**
+     * // TODO Trigger collision with an object event only once
+     * @param collidingObject the object that is colliding with the player
+     */
     @Override
     public void onCollision(Collider collidingObject) {
         if ((Objects.isNull(lastHit) || (lastHit + 2000) < System.currentTimeMillis()) && collidingObject instanceof HitBox) {
@@ -67,10 +82,17 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
             } else {
 
+                if (collidingObject instanceof PowerUpHitBox) {
+                    ((PowerUp)((PowerUpHitBox) collidingObject).object).getPowerUp(); // TODO Trigger collision with an object event only once
+                }
+
             }
         }
     }
 
+    /**
+     * @param border the border that is touched
+     */
     @Override
     public void notifyBoundaryTouching(final SceneBorder border) {
         setSpeed(0);
@@ -93,8 +115,8 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     }
 
     private void addDistance() {
-        this.timer = new Timer();
-        this.timer.schedule(new TimerTask() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 if (health > 0) {
@@ -104,10 +126,28 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         }, 0, 1000);
     }
 
+    /**
+     * @return player's health
+     */
     public int getHealth() {
         return health;
     }
 
+    /**
+     * Updates the player's health.
+     * @param amount how much health to add
+     * @return updated health value
+     */
+    public int addHealth(int amount) {
+        this.health += amount;
+        this.healthText.setText(this.health);
+
+        return this.health;
+    }
+
+    /**
+     * @return player's distance
+     */
     public String getDistanceText() {
         return distanceText.getText();
     }
