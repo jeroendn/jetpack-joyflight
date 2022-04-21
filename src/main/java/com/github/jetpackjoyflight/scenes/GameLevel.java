@@ -111,16 +111,16 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
                         int spawnTime = new Random().nextInt(spawnTimeMax - spawnTimeMin) + spawnTimeMin;
                         timer.schedule(new TimerTask() {
                             public void run() {
-                                System.out.println(objectName);
+//                                System.out.println(objectName);
                                 addObjectEntityByName(objectName);
                             }
                         }, spawnTime);
-                        System.out.println("set object timer " + spawnTimeMin + " - " + spawnTimeMax + " - " + spawnTime + " name: " + objectName);
+//                        System.out.println("set object timer " + spawnTimeMin + " - " + spawnTimeMax + " - " + spawnTime + " name: " + objectName);
                     }
 
                 }
             }, (long) section.duration * section.number);
-            System.out.println("set section timer " + (long) section.duration * section.number + " type: " + section.type);
+//            System.out.println("set section timer " + (long) section.duration * section.number + " type: " + section.type);
         }
 
         return sections;

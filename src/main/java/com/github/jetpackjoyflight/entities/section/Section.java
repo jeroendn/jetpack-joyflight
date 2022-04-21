@@ -4,8 +4,8 @@ import java.util.Random;
 
 final public class Section {
 
-    private final int minObjects = 2;
-    private final int maxObjects = 10;
+    private final int minObjects = 5;
+    private final int maxObjects = 15;
     private final String[] availableObjects = {"coin", "powerup", "laserwall"};
     private final String[] availableTypes = {"mixed", "walls", "laserbeams"};
     public final int duration = 10000;
