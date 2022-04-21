@@ -83,11 +83,12 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
      * @return Random height in range of screen height
      */
     private int getRandomHeight() {
-        return new Random().nextInt((int)getHeight());
+        return new Random().nextInt((int) getHeight());
     }
 
     /**
      * Generate sections with objects for the level
+     *
      * @return list of generated sections
      */
     private Section[] generateSections() {
@@ -96,39 +97,51 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         for (int i = 0; i < sectionCount; i++) {
             sections[i] = new Section(i + 1);
-            System.out.println(i);
         }
 
         for (Section section : sections) {
             this.timer.schedule(new TimerTask() {
                 public void run() {
-                    System.out.println("new SECTION");
+                    System.out.println("-- NEW SECTION: " + section.type + " --");
 
-                    for (String object : section.objects) {
+                    int spawnTimeMin = (section.number != 1) ? section.duration * (section.number - 1) : 0;
+                    int spawnTimeMax = section.duration * section.number;
+
+                    for (String objectName : section.objects) {
+                        int spawnTime = new Random().nextInt(spawnTimeMax - spawnTimeMin) + spawnTimeMin;
                         timer.schedule(new TimerTask() {
                             public void run() {
-
-                                System.out.println(object);
-                                switch (object) {
-                                    case "coin":
-                                        addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                                        break;
-                                    case "powerup":
-                                        addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                                    default:
-                                    case "laserwall":
-                                        addEntity(new LaserWall(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                                        break;
-                                }
-
+                                System.out.println(objectName);
+                                addObjectEntityByName(objectName);
                             }
-                        }, new Random().nextInt(section.duration * section.number));
+                        }, spawnTime);
+                        System.out.println("set object timer " + spawnTimeMin + " - " + spawnTimeMax + " - " + spawnTime + " name: " + objectName);
                     }
 
                 }
             }, (long) section.duration * section.number);
+            System.out.println("set section timer " + (long) section.duration * section.number + " type: " + section.type);
         }
 
         return sections;
+    }
+
+    /**
+     * Add an Object extended entity by its name
+     *
+     * @param objectName Name of the object
+     */
+    private void addObjectEntityByName(String objectName) {
+        switch (objectName) {
+            case "coin":
+                addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                break;
+            case "powerup":
+                addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
+            default:
+            case "laserwall":
+                addEntity(new LaserWall(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                break;
+        }
     }
 }
