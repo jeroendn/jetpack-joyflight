@@ -6,15 +6,10 @@ import com.github.jetpackjoyflight.entities.Object;
 import com.github.jetpackjoyflight.entities.Player;
 
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class PowerUp extends Object {
 
     protected final String[] options = {"health", "coins", "mech"};
-    protected final int spawnIntervalMin = 10000;
-    protected final int spawnIntervalMax = 30000;
-    protected boolean triggered = false;
 
     /**
      * @param initialLocation the initial location of the power up
@@ -39,19 +34,6 @@ public class PowerUp extends Object {
      */
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-        if (!this.triggered) {
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    if (player.getHealth() > 0) {
-                        setAnchorLocation(new Coordinate2D(getSceneWidth(), new Random().nextInt((int)getSceneHeight())));
-                    }
-                    triggered = false;
-                }
-            }, new Random().nextInt(this.spawnIntervalMax + 1 - this.spawnIntervalMin) + this.spawnIntervalMin);
-            this.triggered = true;
-        }
     }
 
     /**
@@ -62,10 +44,16 @@ public class PowerUp extends Object {
         String powerUp = this.options[index];
 
         switch (powerUp) {
-            case "health" -> handleHealthPowerUp();
-            case "mech" -> handleMechPowerUp();
-            case "coins" -> handleCoinPowerUp();
-            default -> handleHealthPowerUp(); // Even if no power up was found we give the health power up as fallback
+            case "coins":
+                handleCoinPowerUp();
+                break;
+            case "mech":
+                handleMechPowerUp();
+                break;
+            default:
+            case "health":
+                handleHealthPowerUp();
+                break;
         }
 
         return powerUp;
