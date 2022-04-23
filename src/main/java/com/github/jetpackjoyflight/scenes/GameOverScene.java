@@ -6,7 +6,6 @@ import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.jetpackjoyflight.entities.buttons.QuitButton;
 import com.github.jetpackjoyflight.entities.buttons.StartButton;
-import com.github.jetpackjoyflight.scenes.GameLevel;
 import com.github.jetpackjoyflight.Main;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -18,6 +17,11 @@ public class GameOverScene extends StaticScene {
     private final GameLevel gameLevel;
     private Main main;
 
+    /**
+     * Constructor for the GameOverScene.
+     * @param main
+     * @param gameLevel
+     */
     public GameOverScene(Main main, GameLevel gameLevel) {
         this.main = main;
         this.gameLevel = gameLevel;
@@ -26,7 +30,7 @@ public class GameOverScene extends StaticScene {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/angry-cat-furious-cat.gif");
-//        setBackgroundAudio("audio/fail-trombone.mp3");
+        setBackgroundAudio("audio/fail-trombone.mp3");
     }
 
     @Override

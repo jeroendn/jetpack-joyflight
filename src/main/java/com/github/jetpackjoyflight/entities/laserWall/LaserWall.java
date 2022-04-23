@@ -10,6 +10,11 @@ public class LaserWall extends Object {
     protected int length;
     protected String direction;
 
+    /**
+     * Create a new LaserWall object.
+     * @param initialLocation
+     * @param player
+     */
     public LaserWall(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = true;
@@ -26,6 +31,5 @@ public class LaserWall extends Object {
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-
     }
 }

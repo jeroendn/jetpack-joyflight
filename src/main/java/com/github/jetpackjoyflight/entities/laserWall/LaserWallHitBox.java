@@ -8,6 +8,10 @@ import javafx.scene.paint.Color;
 
 public class LaserWallHitBox extends HitBox implements Collider {
 
+    /**
+     * @param initialPosition
+     * @param object
+     */
     public LaserWallHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);
 
