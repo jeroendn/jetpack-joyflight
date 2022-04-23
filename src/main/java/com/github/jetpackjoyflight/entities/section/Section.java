@@ -8,7 +8,7 @@ final public class Section {
     private final int maxObjects = 15;
     private final String[] availableObjects = {"coin", "powerup", "laserwall"};
     private final String[] availableTypes = {"mixed", "walls", "laserbeams"};
-    public final int duration = 10000;
+    public final int duration = 8000;
     public final int objectCount = new Random().nextInt(maxObjects + 1 - minObjects) + minObjects;
 
     public String type;

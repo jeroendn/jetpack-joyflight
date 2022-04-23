@@ -20,7 +20,7 @@ public class LaserWall extends Object {
         var sprite = new LaserWallSprite(new Coordinate2D(0, 0));
         addEntity(sprite);
 
-        var hitBox = new LaserWallHitBox(new Coordinate2D(0, 0), this);
+        var hitBox = new LaserWallHitBox(new Coordinate2D(20, 20), this);
         addEntity(hitBox);
     }
 

@@ -11,8 +11,8 @@ public class LaserWallHitBox extends HitBox implements Collider {
     public LaserWallHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);
 
-//        setWidth(0);
-//        setHeight(0);
+        setWidth(110);
+        setHeight(110);
         setFill(Color.TRANSPARENT);
     }
 }
