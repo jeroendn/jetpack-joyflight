@@ -69,7 +69,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     }
 
     /**
-     * // TODO Trigger collision with an object event only once
+     * Handle what happens when the player collides with an object
      * @param collidingObject the object that is colliding with the player
      */
     @Override
@@ -89,7 +89,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
                 }
 
                 if (collidingObject instanceof PowerUpHitBox) {
-                    ((PowerUp)((PowerUpHitBox) collidingObject).object).getPowerUp(); // TODO Trigger collision with an object event only once
+                    ((PowerUp)((PowerUpHitBox) collidingObject).object).getPowerUp();
                 }
             }
             lastHit = System.currentTimeMillis();

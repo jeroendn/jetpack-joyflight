@@ -37,8 +37,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/background-fast.gif");
-//        setBackgroundAudio("audio/coconut_mall.mp3");
-//        setBackgroundAudioVolume(.05);
+        setBackgroundAudio("audio/coconut_mall.mp3");
+        setBackgroundAudioVolume(.05);
     }
 
     @Override
@@ -48,6 +48,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         this.distanceText = new DistanceText(new Coordinate2D(0, 30));
         addEntity(this.distanceText);
+
         this.coinText = new CoinText(new Coordinate2D(0, 60));
         addEntity(this.coinText);
 
@@ -56,25 +57,19 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         this.timer.schedule(new TimerTask() {
             public void run() {
-                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
-            }
-        }, new Random().nextInt(5000));
-
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
-            }
-        }, new Random().nextInt(5000));
-
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
+                addEntity(new Rocket(new Coordinate2D(getWidth(), getRandomHeight()), player));
             }
         }, new Random().nextInt(5000));
 
         this.timer.schedule(new TimerTask() {
             public void run() {
                 addEntity(new Rocket(new Coordinate2D(getWidth(), getRandomHeight()), player));
+            }
+        }, new Random().nextInt(5000));
+
+        this.timer.schedule(new TimerTask() {
+            public void run() {
+                addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
             }
         }, new Random().nextInt(5000));
 
