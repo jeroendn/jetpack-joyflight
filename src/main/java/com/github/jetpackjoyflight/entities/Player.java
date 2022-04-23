@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import com.github.jetpackjoyflight.entities.coin.Coin;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUpHitBox;
 import com.github.jetpackjoyflight.entities.text.DistanceText;
@@ -26,6 +27,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     private int health = 1;
     private int distance = 0;
     private Long lastHit = null;
+    private Timer timer;
 
     /**
      * Constructs a new Player with the given parameters.
@@ -78,15 +80,18 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
                 if (health == 0) {
                     this.main.setActiveScene(2);
                 }
-                lastHit = System.currentTimeMillis();
 
             } else {
+                if (((HitBox) collidingObject).object instanceof Coin) {
+                    System.out.println("Coin");
+                    ((Coin) ((HitBox) collidingObject).object).addCoin();
+                }
 
                 if (collidingObject instanceof PowerUpHitBox) {
                     ((PowerUp)((PowerUpHitBox) collidingObject).object).getPowerUp(); // TODO Trigger collision with an object event only once
                 }
-
             }
+            lastHit = System.currentTimeMillis();
         }
     }
 

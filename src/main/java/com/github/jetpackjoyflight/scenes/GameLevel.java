@@ -9,6 +9,7 @@ import com.github.jetpackjoyflight.entities.coin.Coin;
 import com.github.jetpackjoyflight.entities.laserWall.LaserWall;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
 import com.github.jetpackjoyflight.entities.rocket.Rocket;
+import com.github.jetpackjoyflight.entities.text.CoinText;
 import com.github.jetpackjoyflight.entities.section.Section;
 import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
@@ -23,6 +24,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     private final Main main;
     private Player player;
     private final Timer timer = new Timer();
+    DistanceText distanceText;
+    CoinText coinText;
 
     /**
      * @param main
@@ -43,25 +46,37 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var healthText = new HealthText(new Coordinate2D(0, 0));
         addEntity(healthText);
 
-        var distanceText = new DistanceText(new Coordinate2D(0, 30));
-        addEntity(distanceText);
+        this.distanceText = new DistanceText(new Coordinate2D(0, 30));
+        addEntity(this.distanceText);
+        this.coinText = new CoinText(new Coordinate2D(0, 60));
+        addEntity(this.coinText);
 
         this.player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
         addEntity(player);
 
         this.timer.schedule(new TimerTask() {
             public void run() {
-                addEntity(new Rocket(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
             }
         }, new Random().nextInt(5000));
 
         this.timer.schedule(new TimerTask() {
             public void run() {
-                addEntity(new Rocket(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                addEntity(new Rocket(new Coordinate2D(getWidth(), 300), player));
             }
         }, new Random().nextInt(5000));
 
-        this.generateSections();
+        this.timer.schedule(new TimerTask() {
+            public void run() {
+                addEntity(new PowerUp(new Coordinate2D(getWidth(), 300), player));
+            }
+        }, new Random().nextInt(5000));
+
+        this.timer.schedule(new TimerTask() {
+            public void run() {
+                addEntity(new Coin(new Coordinate2D(getWidth(), 300), player, coinText));
+            }
+        }, new Random().nextInt(5000));
     }
 
     @Override
@@ -76,59 +91,15 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
      * @return
      */
     public String getDistanceText() {
-        return this.player.getDistanceText();
+        return this.distanceText.getText();
     }
+
 
     /**
-     * @return Random height in range of screen height
+     * @return
      */
-    private int getRandomHeight() {
-        return new Random().nextInt((int)getHeight());
+    public String getCoinText() {
+        return this.coinText.getText();
     }
 
-    /**
-     * Generate sections with objects for the level
-     * @return list of generated sections
-     */
-    private Section[] generateSections() {
-        int sectionCount = 5;
-        Section[] sections = new Section[sectionCount];
-
-        for (int i = 0; i < sectionCount; i++) {
-            sections[i] = new Section(i + 1);
-            System.out.println(i);
-        }
-
-        for (Section section : sections) {
-            this.timer.schedule(new TimerTask() {
-                public void run() {
-                    System.out.println("new SECTION");
-
-                    for (String object : section.objects) {
-                        timer.schedule(new TimerTask() {
-                            public void run() {
-
-                                System.out.println(object);
-                                switch (object) {
-                                    case "coin":
-                                        addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                                        break;
-                                    case "powerup":
-                                        addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                                    default:
-                                    case "laserwall":
-                                        addEntity(new LaserWall(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                                        break;
-                                }
-
-                            }
-                        }, new Random().nextInt(section.duration * section.number));
-                    }
-
-                }
-            }, (long) section.duration * section.number);
-        }
-
-        return sections;
-    }
 }

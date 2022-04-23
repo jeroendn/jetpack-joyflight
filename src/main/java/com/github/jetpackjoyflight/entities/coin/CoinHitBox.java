@@ -11,8 +11,8 @@ public class CoinHitBox extends HitBox implements Collider {
     public CoinHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);
 
-//        setWidth(0);
-//        setHeight(0);
+        setWidth(70);
+        setHeight(80);
         setFill(Color.TRANSPARENT);
     }
 }

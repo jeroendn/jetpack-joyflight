@@ -44,11 +44,18 @@ public class GameOverScene extends StaticScene {
         distanceText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
         addEntity(distanceText);
 
-        var playGameButton = new StartButton(new Coordinate2D((getWidth() / 2) - 20, getHeight() / 2), main);
+        var coins = gameLevel.getCoinText();
+        var coinsText = new TextEntity(new Coordinate2D(getWidth() / 2, (getHeight() / 2) + 80), coins);
+        coinsText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+        coinsText.setFill(Color.GOLD);
+        coinsText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        addEntity(coinsText);
+
+        var playGameButton = new StartButton(new Coordinate2D((getWidth() / 2) - 40, (getHeight() / 2) + 90), main);
         playGameButton.setAnchorPoint(AnchorPoint.TOP_RIGHT);
         addEntity(playGameButton);
 
-        var exitGameButton = new QuitButton(new Coordinate2D((getWidth() / 2) + 20, getHeight() / 2), main);
+        var exitGameButton = new QuitButton(new Coordinate2D((getWidth() / 2) + 40, (getHeight() / 2) + 90), main);
         exitGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);
         addEntity(exitGameButton);
     }
