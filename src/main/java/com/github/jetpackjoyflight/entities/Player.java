@@ -9,6 +9,7 @@ import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.jetpackjoyflight.entities.coin.Coin;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUpHitBox;
+import com.github.jetpackjoyflight.entities.text.CoinText;
 import com.github.jetpackjoyflight.entities.text.DistanceText;
 import com.github.jetpackjoyflight.entities.text.HealthText;
 import com.github.jetpackjoyflight.Main;
@@ -23,6 +24,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     private final HealthText healthText;
     private final DistanceText distanceText;
+    CoinText coinText;
     private final Main main;
     private int health = 1;
     private int distance = 0;
@@ -35,11 +37,12 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
      * @param distanceText the distance text
      * @param main
      */
-    public Player(final Coordinate2D location, final HealthText healthText, final DistanceText distanceText, final Main main) {
+    public Player(final Coordinate2D location, final HealthText healthText, final DistanceText distanceText, final CoinText coinText, final Main main) {
         super("sprites/player.png", location, new Size(200, 100), 1, 1);
 
         this.healthText = healthText;
         this.distanceText = distanceText;
+        this.coinText = coinText;
         this.main = main;
         healthText.setText(health);
         distanceText.setText(distance);
@@ -149,5 +152,12 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         this.healthText.setText(this.health);
 
         return this.health;
+    }
+
+    /**
+     *  Add the coin bonus for hitting a coin power up
+     */
+    public void addCoins(){
+        this.coinText.addCoins(20);
     }
 }

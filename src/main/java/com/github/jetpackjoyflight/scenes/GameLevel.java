@@ -51,7 +51,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         this.coinText = new CoinText(new Coordinate2D(0, 60));
         addEntity(this.coinText);
 
-        this.player = new Player(new Coordinate2D(50, 1), healthText, distanceText, main);
+        this.player = new Player(new Coordinate2D(50, 1), healthText, distanceText, coinText, main);
         addEntity(player);
 
         this.timer.schedule(new TimerTask() {
