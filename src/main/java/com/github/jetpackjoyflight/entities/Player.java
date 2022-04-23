@@ -27,7 +27,6 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
     private int health = 1;
     private int distance = 0;
     private Long lastHit = null;
-    private Timer timer;
 
     /**
      * Constructs a new Player with the given parameters.
