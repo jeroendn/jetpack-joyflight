@@ -11,6 +11,11 @@ public class LaserBeam extends Object {
     protected final int triggerTime = 0;
     protected int time = 0;
 
+    /**
+     * Create a new LaserBeam object.
+     * @param initialLocation
+     * @param player
+     */
     public LaserBeam(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = true;
@@ -27,6 +32,5 @@ public class LaserBeam extends Object {
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-
     }
 }

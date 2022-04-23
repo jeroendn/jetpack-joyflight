@@ -16,6 +16,11 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
     private final Main main;
 
+    /**
+     * Create a new StartButton.
+     * @param initialPosition
+     * @param main
+     */
     public StartButton(Coordinate2D initialPosition, Main main) {
         super(initialPosition, "Play game");
         this.main = main;
@@ -23,6 +28,10 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
+    /**
+     * @param button
+     * @param coordinate2D
+     */
     @Override
     public void onMouseButtonPressed(final MouseButton button, final Coordinate2D coordinate2D) {
         main.setActiveScene(1);

@@ -74,9 +74,11 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
         this.timer.schedule(new TimerTask() {
             public void run() {
-                addEntity(new Coin(new Coordinate2D(getWidth(), 300), player, coinText));
+                addEntity(new Rocket(new Coordinate2D(getWidth(), getRandomHeight()), player));
             }
         }, new Random().nextInt(5000));
+
+        this.generateSections();
     }
 
     @Override
@@ -94,7 +96,6 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         return this.distanceText.getText();
     }
 
-
     /**
      * @return
      */
@@ -102,4 +103,65 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         return this.coinText.getText();
     }
 
+    /**
+     * @return Random height in range of screen height
+     */
+    private int getRandomHeight() {
+        return new Random().nextInt((int) getHeight());
+    }
+
+    /**
+     * Generate sections with objects for the level
+     *
+     * @return list of generated sections
+     */
+    private Section[] generateSections() {
+        int sectionCount = 5;
+        Section[] sections = new Section[sectionCount];
+
+        for (int i = 0; i < sectionCount; i++) {
+            sections[i] = new Section(i + 1);
+        }
+
+        for (Section section : sections) {
+            this.timer.schedule(new TimerTask() {
+                public void run() {
+
+                    int spawnTimeMin = (section.number != 1) ? section.duration * (section.number - 1) : 0;
+                    int spawnTimeMax = section.duration * section.number;
+
+                    for (String objectName : section.objects) {
+                        int spawnTime = new Random().nextInt(spawnTimeMax - spawnTimeMin) + spawnTimeMin;
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                addObjectEntityByName(objectName);
+                            }
+                        }, spawnTime);
+                    }
+
+                }
+            }, (long) section.duration * section.number);
+        }
+
+        return sections;
+    }
+
+    /**
+     * Add an Object extended entity by its name
+     *
+     * @param objectName Name of the object
+     */
+    private void addObjectEntityByName(String objectName) {
+        switch (objectName) {
+            case "coin":
+                addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                break;
+            case "powerup":
+                addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
+            default:
+            case "laserwall":
+                addEntity(new LaserWall(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                break;
+        }
+    }
 }

@@ -4,34 +4,81 @@ import java.util.Random;
 
 final public class Section {
 
-    private final int minObjects = 2;
-    private final int maxObjects = 5;
+    private final int minObjects = 5;
+    private final int maxObjects = 15;
     private final String[] availableObjects = {"coin", "powerup", "laserwall"};
-    public final int duration = 10000;
+    private final String[] availableTypes = {"mixed", "walls", "laserbeams"};
+    public final int duration = 8000;
+    public final int objectCount = new Random().nextInt(maxObjects + 1 - minObjects) + minObjects;
 
-    private String type; // TODO Type of section. Options: regular or laserbeam(s)
-    public String[] objects;
-    public int number; // Number of the section in the order of appearance
+    public String type;
+    public String[] objects = new String[this.objectCount];
+    public int number;
 
+    /**
+     * Generates a random section.
+     *
+     * @param number Number of the section in the order of appearance
+     */
     public Section(int number) {
         this.number = number;
-        int objectCount = new Random().nextInt(maxObjects + 1 - minObjects) + minObjects;
-        this.objects = new String[objectCount];
+        this.setRandomType();
 
-        for (int i = 0; i < objectCount; i++) {
-            this.objects[i] = getRandomObject();
+        switch (this.type) {
+            case "walls":
+                this.setObjectsForTypeWalls();
+                break;
+            case "laserbeams":
+                this.setObjectsForTypeLaserBeams();
+                break;
+            default:
+            case "mixed":
+                this.setObjectsForTypeMixed();
+                break;
         }
-
-        System.out.println(this.objects);
     }
 
+    /**
+     * Sets a random type for the section.
+     */
+    private void setRandomType() {
+        if (new Random().nextInt(3) == 0) { // Add a 1/3 chance of a mixed section
+            this.type = "mixed";
+            return;
+        }
+
+        int index = new Random().nextInt(this.availableTypes.length);
+        this.type = this.availableTypes[index];
+    }
+
+    private void setObjectsForTypeMixed() {
+        for (int i = 0; i < this.objectCount; i++) {
+            String objectName = (new Random().nextInt(3) == 0 ? "wall" : this.getRandomObject()); // Adds an 1/3 chance of object being a wall
+            this.objects[i] = objectName;
+        }
+    }
+
+    private void setObjectsForTypeWalls() {
+        for (int i = 0; i < this.objectCount; i++) {
+            String objectName = (new Random().nextInt(5) == 0 ? "coin" : "wall"); // Adds an 1/5 chance of object being a coin
+            this.objects[i] = objectName;
+        }
+    }
+
+    private void setObjectsForTypeLaserBeams() {
+        for (int i = 0; i < this.objectCount; i++) {
+            this.objects[i] = "laserbeam";
+        }
+    }
+
+    /**
+     * Returns a random object from the available objects.
+     *
+     * @return Random object
+     */
     private String getRandomObject() {
         int index = new Random().nextInt(this.availableObjects.length);
 
         return this.availableObjects[index];
-    }
-
-    public void draw() {
-
     }
 }

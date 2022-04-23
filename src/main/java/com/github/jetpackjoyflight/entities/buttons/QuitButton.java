@@ -16,6 +16,11 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
     private final Main main;
 
+    /**
+     * Create a new QuitButton.
+     * @param initialPosition
+     * @param main
+     */
     public QuitButton(Coordinate2D initialPosition, Main main) {
         super(initialPosition, "Quit game");
         this.main = main;
@@ -23,6 +28,11 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
+    /**
+     * Quit the game when the button is pressed.
+     * @param button
+     * @param coordinate2D
+     */
     @Override
     public void onMouseButtonPressed(final MouseButton button, final Coordinate2D coordinate2D) {
         main.quit();
