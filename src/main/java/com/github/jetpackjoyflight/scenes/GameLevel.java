@@ -154,7 +154,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     private void addObjectEntityByName(String objectName) {
         switch (objectName) {
             case "coin":
-                addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player));
+                addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player, this.coinText));
                 break;
             case "powerup":
                 addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));

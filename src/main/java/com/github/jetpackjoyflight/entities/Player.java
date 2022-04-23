@@ -83,7 +83,6 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
             } else {
                 if (((HitBox) collidingObject).object instanceof Coin) {
-                    System.out.println("Coin");
                     ((Coin) ((HitBox) collidingObject).object).addCoin();
                 }
 
@@ -119,6 +118,9 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         }
     }
 
+    /**
+     * Updates the player's distance
+     */
     private void addDistance() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -148,12 +150,5 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
         this.healthText.setText(this.health);
 
         return this.health;
-    }
-
-    /**
-     * @return player's distance
-     */
-    public String getDistanceText() {
-        return distanceText.getText();
     }
 }
