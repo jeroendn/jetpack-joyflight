@@ -31,8 +31,6 @@ public class Coin extends Object {
 
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-        this.isBig = new Random().nextBoolean();
-        setAnchorLocation(new Coordinate2D(getSceneWidth(), new Random().nextInt((int) getSceneHeight())));
     }
 
     public void addCoin() {

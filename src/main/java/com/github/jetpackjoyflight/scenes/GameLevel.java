@@ -67,12 +67,6 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
             }
         }, new Random().nextInt(5000));
 
-        this.timer.schedule(new TimerTask() {
-            public void run() {
-                addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
-            }
-        }, new Random().nextInt(5000));
-
         this.generateSections();
     }
 
@@ -102,7 +96,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
      * @return Random height in range of screen height
      */
     private int getRandomHeight() {
-        return new Random().nextInt((int) getHeight());
+        return new Random().nextInt((int) getHeight()) - 100;
     }
 
     /**
@@ -153,6 +147,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
                 break;
             case "powerup":
                 addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
+            case "laserbeam":
+                break;
             default:
             case "laserwall":
                 addEntity(new LaserWall(new Coordinate2D(getWidth(), getRandomHeight()), player));
