@@ -13,6 +13,12 @@ public class Coin extends Object {
     private final CoinText coinText;
     protected boolean isBig;
 
+    /**
+     * Constructor for a coin.
+     * @param initialLocation
+     * @param player
+     * @param coinText
+     */
     public Coin(Coordinate2D initialLocation, Player player, CoinText coinText) {
         super(initialLocation, player);
         this.isHostile = false;
@@ -29,6 +35,9 @@ public class Coin extends Object {
         addEntity(hitBox);
     }
 
+    /**
+     * @param border
+     */
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
     }

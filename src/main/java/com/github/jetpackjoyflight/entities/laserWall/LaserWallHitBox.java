@@ -9,14 +9,15 @@ import javafx.scene.paint.Color;
 public class LaserWallHitBox extends HitBox implements Collider {
 
     /**
+     * The constructor for the LaserWallHitBox.
      * @param initialPosition
-     * @param object
+     * @param object The object that this hit box belongs to
      */
     public LaserWallHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);
 
-        int width = 0;
-        int height = 0;
+        int width;
+        int height;
 
         switch (((LaserWall)object).direction) {
             case "vertical":

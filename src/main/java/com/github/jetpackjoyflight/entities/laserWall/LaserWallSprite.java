@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 public class LaserWallSprite extends SpriteEntity {
 
     /**
-     *
      * @param location
      * @param imgPath location of the image
      */
