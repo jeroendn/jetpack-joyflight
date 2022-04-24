@@ -22,7 +22,7 @@ public class Coin extends Object {
 
     @Override
     protected void setupEntities() {
-        var sprite = new CoinSprite(new Coordinate2D(0, 0));
+        var sprite = new CoinSprite(new Coordinate2D(0, 0), this.isBig);
         addEntity(sprite);
 
         var hitBox = new CoinHitBox(new Coordinate2D(0, 0), this);
