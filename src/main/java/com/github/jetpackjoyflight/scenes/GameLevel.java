@@ -105,7 +105,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
      * @return list of generated sections
      */
     private Section[] generateSections() {
-        int sectionCount = 5;
+        int sectionCount = 100;
         Section[] sections = new Section[sectionCount];
 
         for (int i = 0; i < sectionCount; i++) {
