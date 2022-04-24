@@ -6,7 +6,12 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class LaserWallSprite extends SpriteEntity {
 
-    public LaserWallSprite(final Coordinate2D location) {
-        super("sprites/laserwall.png", location, new Size(150, 150));
+    /**
+     *
+     * @param location
+     * @param imgPath location of the image
+     */
+    public LaserWallSprite(final Coordinate2D location, String imgPath) {
+        super(imgPath, location, new Size(150, 150));
     }
 }
