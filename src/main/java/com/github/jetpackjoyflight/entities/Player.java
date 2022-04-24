@@ -132,7 +132,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
                     distanceText.setText(++distance);
                 }
             }
-        }, 0, 1000);
+        }, 0, 500);
     }
 
     /**
