@@ -6,7 +6,6 @@ import com.github.jetpackjoyflight.entities.coin.Coin;
 import com.github.jetpackjoyflight.entities.laserBeam.LaserBeam;
 import com.github.jetpackjoyflight.entities.laserWall.LaserWall;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
-import com.github.jetpackjoyflight.entities.text.CoinText;
 
 import java.util.Random;
 
@@ -79,7 +78,7 @@ final public class Section {
     private void setObjectsForTypeWalls() {
         for (int i = 0; i < this.objectCount; i++) {
             if (new Random().nextInt(5) == 0) { // Adds an 1/5 chance of object being a coin
-                this.objects[i] = new Coin(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player, new CoinText(new Coordinate2D(this.spawnX, this.getRandomHeight())));
+                this.objects[i] = new Coin(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player);
             } else {
                 this.objects[i] = new LaserWall(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player);
             }
@@ -102,7 +101,7 @@ final public class Section {
 
         switch (this.availableObjects[index]) {
             case "coin":
-                return new Coin(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player, new CoinText(new Coordinate2D(this.spawnX, this.getRandomHeight())));
+                return new Coin(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player);
             case "powerup":
                 return new PowerUp(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player);
             default:
