@@ -68,6 +68,6 @@ public class PowerUp extends Object {
     }
 
     protected void handleCoinPowerUp() {
-       this.player.addCoins();
+       this.player.addCoins(20);
     }
 }

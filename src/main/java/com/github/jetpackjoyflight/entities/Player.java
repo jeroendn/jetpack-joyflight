@@ -24,7 +24,7 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     private final HealthText healthText;
     private final DistanceText distanceText;
-    CoinText coinText;
+    private final CoinText coinText;
     private final Main main;
     private int health = 1;
     private int distance = 0;
@@ -85,7 +85,8 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
             } else {
                 if (((HitBox) collidingObject).object instanceof Coin) {
-                    ((Coin) ((HitBox) collidingObject).object).addCoin();
+                    var coins = ((Coin) ((HitBox) collidingObject).object).isBig ? 5 : 1;
+                    addCoins(coins);
                 }
 
                 if (collidingObject instanceof PowerUpHitBox) {
@@ -156,8 +157,9 @@ public class Player extends DynamicSpriteEntity implements SceneBorderTouchingWa
 
     /**
      *  Add the coin bonus for hitting a coin power up
+     * @param coins
      */
-    public void addCoins(){
-        this.coinText.addCoins(20);
+    public void addCoins(int coins){
+        this.coinText.addCoins(coins);
     }
 }

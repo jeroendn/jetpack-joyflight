@@ -4,25 +4,20 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.jetpackjoyflight.entities.Object;
 import com.github.jetpackjoyflight.entities.Player;
-import com.github.jetpackjoyflight.entities.text.CoinText;
 
 import java.util.Random;
 
 public class Coin extends Object {
-
-    private final CoinText coinText;
-    protected boolean isBig;
+    public boolean isBig;
 
     /**
      * Constructor for a coin.
      * @param initialLocation
      * @param player
-     * @param coinText
      */
-    public Coin(Coordinate2D initialLocation, Player player, CoinText coinText) {
+    public Coin(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
         this.isHostile = false;
-        this.coinText = coinText;
         this.isBig = new Random().nextBoolean();
     }
 
@@ -40,13 +35,5 @@ public class Coin extends Object {
      */
     @Override
     public void notifyBoundaryCrossing(final SceneBorder border) {
-    }
-
-    public void addCoin() {
-        if (this.isBig) {
-           coinText.addCoins(5);
-        } else {
-            coinText.addCoins(1);
-        }
     }
 }
