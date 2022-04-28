@@ -31,6 +31,7 @@ public class GameOverScene extends StaticScene {
     public void setupScene() {
         setBackgroundImage("backgrounds/angry-cat-furious-cat.gif");
         setBackgroundAudio("audio/fail-trombone.mp3");
+        setBackgroundAudioVolume(0.1);
     }
 
     @Override
