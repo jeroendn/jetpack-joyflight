@@ -2,10 +2,12 @@ package com.github.jetpackjoyflight.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
+import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.jetpackjoyflight.entities.Player;
 import com.github.jetpackjoyflight.entities.coin.Coin;
+import com.github.jetpackjoyflight.entities.laserBeam.LaserBeam;
 import com.github.jetpackjoyflight.entities.laserWall.LaserWall;
 import com.github.jetpackjoyflight.entities.powerUp.PowerUp;
 import com.github.jetpackjoyflight.entities.rocket.Rocket;
@@ -109,7 +111,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         Section[] sections = new Section[sectionCount];
 
         for (int i = 0; i < sectionCount; i++) {
-            sections[i] = new Section(i + 1);
+            sections[i] = new Section(i + 1, this.player, (int) getWidth(), (int) getHeight());
         }
 
         for (Section section : sections) {
@@ -119,11 +121,15 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
                     int spawnTimeMin = (section.number != 1) ? section.duration * (section.number - 1) : 0;
                     int spawnTimeMax = section.duration * section.number;
 
-                    for (String objectName : section.objects) {
+                    for (Object object : section.objects) {
                         int spawnTime = new Random().nextInt(spawnTimeMax - spawnTimeMin) + spawnTimeMin;
                         timer.schedule(new TimerTask() {
                             public void run() {
-                                addObjectEntityByName(objectName);
+                                if (object instanceof LaserBeam) {
+                                    System.out.println("Spawning Object LaserBeam -- Not yet implemented!");
+                                } else {
+                                    addEntity((YaegerEntity) object);
+                                }
                             }
                         }, spawnTime);
                     }
@@ -133,26 +139,5 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         }
 
         return sections;
-    }
-
-    /**
-     * Add an Object extended entity by its name
-     *
-     * @param objectName Name of the object
-     */
-    private void addObjectEntityByName(String objectName) {
-        switch (objectName) {
-            case "coin":
-                addEntity(new Coin(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                break;
-            case "powerup":
-                addEntity(new PowerUp(new Coordinate2D(getWidth(), getRandomHeight()), player));
-            case "laserbeam":
-                break;
-            default:
-            case "laserwall":
-                addEntity(new LaserWall(new Coordinate2D(getWidth(), getRandomHeight()), player));
-                break;
-        }
     }
 }
