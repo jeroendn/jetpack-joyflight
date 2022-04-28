@@ -18,7 +18,7 @@ public class Rocket extends Object {
     /**
      *
      * @param initialLocation the initial location of the rocket
-     * @param player
+     * @param player The player which can interact with the rocket
      */
     public Rocket(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);

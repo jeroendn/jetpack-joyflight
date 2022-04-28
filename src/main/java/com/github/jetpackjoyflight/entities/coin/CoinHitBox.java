@@ -8,6 +8,10 @@ import javafx.scene.paint.Color;
 
 public class CoinHitBox extends HitBox implements Collider {
 
+    /**
+     * @param initialPosition
+     * @param object The coin that this hit box belongs to.
+     */
     public CoinHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);
 

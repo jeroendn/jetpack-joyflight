@@ -1,0 +1,12 @@
+module:jetpackjoyflight
+com.github.jetpackjoyflight
+com.github.jetpackjoyflight.entities
+com.github.jetpackjoyflight.entities.buttons
+com.github.jetpackjoyflight.entities.coin
+com.github.jetpackjoyflight.entities.laserBeam
+com.github.jetpackjoyflight.entities.laserWall
+com.github.jetpackjoyflight.entities.powerUp
+com.github.jetpackjoyflight.entities.rocket
+com.github.jetpackjoyflight.entities.section
+com.github.jetpackjoyflight.entities.text
+com.github.jetpackjoyflight.scenes

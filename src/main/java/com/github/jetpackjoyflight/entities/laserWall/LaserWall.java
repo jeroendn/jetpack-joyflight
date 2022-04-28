@@ -16,7 +16,7 @@ public class LaserWall extends Object {
     /**
      * Create a new LaserWall object.
      * @param initialLocation
-     * @param player
+     * @param player The player which can interact with the laser wall.
      */
     public LaserWall(Coordinate2D initialLocation, Player player) {
         super(initialLocation, player);
@@ -52,6 +52,9 @@ public class LaserWall extends Object {
     public void notifyBoundaryCrossing(final SceneBorder border) {
     }
 
+    /**
+     * Set the direction of the laser wall.
+     */
     protected void setRandomDirection() {
         int index = new Random().nextInt(this.directionOptions.length);
         this.direction = this.directionOptions[index];

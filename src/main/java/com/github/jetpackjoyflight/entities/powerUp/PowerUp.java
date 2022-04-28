@@ -59,14 +59,23 @@ public class PowerUp extends Object {
         return powerUp;
     }
 
+    /**
+     * Handle what happens when the player collects a health power up
+     */
     protected void handleHealthPowerUp() {
         this.player.addHealth(1);
     }
 
+    /**
+     * Handle what happens when the player collects a mech power up
+     */
     protected void handleMechPowerUp() {
         // TODO
     }
 
+    /**
+     * Handle what happens when the player collects a coin power up
+     */
     protected void handleCoinPowerUp() {
        this.player.addCoins(20);
     }

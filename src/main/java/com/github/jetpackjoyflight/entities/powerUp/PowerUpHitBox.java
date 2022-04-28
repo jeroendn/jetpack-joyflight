@@ -10,7 +10,7 @@ public class PowerUpHitBox extends HitBox implements Collider {
 
     /**
      * @param initialPosition
-     * @param object
+     * @param object The object that this hit box belongs to
      */
     public PowerUpHitBox(final Coordinate2D initialPosition, Object object) {
         super(initialPosition, object);

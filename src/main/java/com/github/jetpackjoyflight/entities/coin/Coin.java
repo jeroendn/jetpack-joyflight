@@ -8,6 +8,7 @@ import com.github.jetpackjoyflight.entities.Player;
 import java.util.Random;
 
 public class Coin extends Object {
+
     public boolean isBig;
 
     /**

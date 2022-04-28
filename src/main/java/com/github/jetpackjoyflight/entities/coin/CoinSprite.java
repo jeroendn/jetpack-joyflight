@@ -6,6 +6,10 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class CoinSprite extends SpriteEntity {
 
+    /**
+     * @param location
+     * @param isBig
+     */
     public CoinSprite(final Coordinate2D location, final Boolean isBig) {
         super("sprites/coin.png", location, (isBig) ? new Size(75, 75) : new Size(50, 50));
     }

@@ -8,6 +8,9 @@ import javafx.scene.text.FontWeight;
 
 public class DistanceText extends TextEntity {
 
+    /**
+     * @param initialPosition
+     */
     public DistanceText(Coordinate2D initialPosition) {
         super(initialPosition);
 
@@ -15,6 +18,9 @@ public class DistanceText extends TextEntity {
         setFill(Color.PINK);
     }
 
+    /**
+     * @param distance
+     */
     public void setText(final int distance) {
         setText("Distance: " + distance);
     }

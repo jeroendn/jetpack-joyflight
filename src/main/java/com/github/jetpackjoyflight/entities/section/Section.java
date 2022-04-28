@@ -65,6 +65,9 @@ final public class Section {
         this.type = this.availableTypes[index];
     }
 
+    /**
+     * Sets the objects for the section to all possible objects. (Except for LaserBeams)
+     */
     private void setObjectsForTypeMixed() {
         for (int i = 0; i < this.objectCount; i++) {
             if (new Random().nextInt(3) == 0) { // Adds an 1/3 chance of object being a wall
@@ -75,6 +78,9 @@ final public class Section {
         }
     }
 
+    /**
+     * Sets the objects for the section to be walls and have some coins.
+     */
     private void setObjectsForTypeWalls() {
         for (int i = 0; i < this.objectCount; i++) {
             if (new Random().nextInt(5) == 0) { // Adds an 1/5 chance of object being a coin
@@ -85,6 +91,9 @@ final public class Section {
         }
     }
 
+    /**
+     * Sets the objects for the section to be laser beams.
+     */
     private void setObjectsForTypeLaserBeams() {
         for (int i = 0; i < this.objectCount; i++) {
             this.objects[i] = new LaserBeam(new Coordinate2D(this.spawnX, this.getRandomHeight()), this.player);
@@ -110,6 +119,10 @@ final public class Section {
         }
     }
 
+    /**
+     * Generates a random int in range of the max spawn height.
+     * @return Random height for the object.
+     */
     private int getRandomHeight() {
         return new Random().nextInt((int) this.maxSpawnY) - 100;
     }

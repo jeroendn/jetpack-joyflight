@@ -10,6 +10,9 @@ public class CoinText extends TextEntity {
 
     private int coins;
 
+    /**
+     * @param initialPosition
+     */
     public CoinText(Coordinate2D initialPosition) {
         super(initialPosition);
 
@@ -23,6 +26,10 @@ public class CoinText extends TextEntity {
         setText("Coins: " + this.coins);
     }
 
+    /**
+     * Add coins to the score and update the text
+     * @param coins
+     */
     public void addCoins(int coins) {
         this.coins = this.coins + coins;
         setText();
