@@ -23,8 +23,8 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     private final Main main;
     private Player player;
     private final Timer timer = new Timer();
-    DistanceText distanceText;
-    CoinText coinText;
+    public DistanceText distanceText;
+    public CoinText coinText;
 
     /**
      * @param main
